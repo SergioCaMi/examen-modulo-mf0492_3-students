@@ -1,6 +1,6 @@
 
 function filterPendingTaks(tasks) {
-
+  return tasks.filter(t=> !t.completed).map(t => t.task).join(', ')
 }
 
 const tasks = [

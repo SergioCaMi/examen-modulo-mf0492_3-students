@@ -5,3 +5,15 @@
   Si el fichero no existe, debe crearse. 
 
   */
+const fs = require('fs');
+
+
+const datosStr = "\nNuevo acceso detectado."
+try {
+  fs.appendFileSync("log.txt", datosStr, "utf8");
+  console.log('Línea añadida a log.txt')
+} catch (error) {
+  console.log("Error al añadir datos al archivo.");
+}
+
+
