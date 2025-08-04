@@ -1,0 +1,3 @@
+GET /check
+GET / - Home
+GET /api/patients

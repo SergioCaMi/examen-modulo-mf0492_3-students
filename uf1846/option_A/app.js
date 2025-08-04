@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Patient = require('./models/patient');
+const { logRequest } = require('./utils/utils.js');
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.json()); // Middleware integrado para manejar JSON
 
 // Nueva ruta: Página de inicio
 app.get('/', async (req, res) => {
+    logRequest(`GET / - Home`);
     try {
         const totalPatients = await Patient.countDocuments();
         res.render('home', { totalPatients });
@@ -25,8 +27,9 @@ app.get('/', async (req, res) => {
 
 // Endpoint 1: Obtener todos los pacientes en formato JSON en la ruta /api/patients
 app.get('/api/patients', async (req, res) => {
+    logRequest(`GET /api/patients`);
     try {
-        const patients = [];
+        const patients = await Patient.find({});
         res.json({
             message: "Query executed successfully",
             results: patients
@@ -43,9 +46,10 @@ app.get('/form', (req, res) => {
 
 // Endpoint 3: Verificar si el paciente existe y mostrar información
 app.get('/check', async (req, res) => {
-    
+    logRequest(`GET /check`);
+     const { ssn } = req.query;
     try {
-        const patient = await Patient.findOne();
+        const patient = await Patient.findOne({ssn});
         console.log("🚀 ~ file: app.js:52 ~ app.get ~ patient:", patient)
 
         if (patient) {
