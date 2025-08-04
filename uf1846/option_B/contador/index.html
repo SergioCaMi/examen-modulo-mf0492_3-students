@@ -26,14 +26,12 @@
   <body>
     <div id="app">
       <!-- Contador con clases ya implementadas -->
-      <div class="contador" :class="contador % 2 === 0 ? 'azul' : 'rojo'">
-        <!-- TODO: Mostrar el valor dinámico del contador aquí -->
-      </div>
+      <div class="contador" :class="contador % 2 === 0 ? 'azul' : 'rojo'"><!-- TODO: Mostrar el valor dinámico del contador aquí -->{{contador}}</div>
 
       <!-- TODO: Agregar las directivas @click a los botones -->
-      <button>Incrementar</button>
-      <button>Decrementar</button>
-      <button>Reiniciar</button>
+      <button @click="incrementar">Incrementar</button>
+      <button @click="decrementar">Decrementar</button>
+      <button @click="reiniciar">Reiniciar</button>
     </div>
 
     <script type="module">
@@ -42,15 +40,25 @@
       createApp({
         setup() {
           // TODO: Crear una variable reactiva "contador" inicializada en 0
-
+          const contador = ref(0);
           // TODO: Implementar la función "incrementar" para aumentar el contador
-
+          const incrementar = () => {
+            contador.value += 1
+          };
           // TODO: Implementar la función "decrementar" para disminuir el contador, sin bajar de 0
-
+          const decrementar = () => {
+            contador.value -= 1
+          };
           // TODO: Implementar la función "reiniciar" para poner el contador en 0
-
+          const reiniciar = () => {
+            contador.value = 0
+          };
           return {
             // TODO: retornar contador e implementar las funciones para usarlas en la plantilla
+            contador,
+            incrementar,
+            decrementar,
+            reiniciar,
           };
         },
       }).mount("#app");

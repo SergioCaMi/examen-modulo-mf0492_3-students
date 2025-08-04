@@ -8,20 +8,20 @@
   <body>
     <div id="app">
       <!-- TODO: Agregar los eventos @click para cambiar la pestaña -->
-      <button>Inicio</button>
-      <button>Perfil</button>
-      <button>Configuración</button>
+      <button @click="tab='home'">Inicio</button>
+      <button @click="tab='perfil'">Perfil</button>
+      <button @click="tab='config'">Configuración</button>
 
       <!-- TODO: Mostrar el contenido de las pestañas con v-if -->
-      <div>
+      <div v-if="tab=='home'">
         <!-- TODO: Monstar el contenido de la pestaña "home" -->
         <h2>Bienvenido a la página de inicio</h2>
       </div>
-      <div>
+      <div v-else-if="tab=='perfil'">
         <!-- TODO: Monstar el contenido de la pestaña "perfil" -->
         <h2>Este es tu perfil</h2>
       </div>
-      <div>
+      <div v-else-if="tab=='config'">
         <!-- TODO: Mostrar el contenido de la pestaña "configuracion" -->
         <h2>Ajustes de usuario</h2>
       </div>
@@ -33,9 +33,11 @@
       createApp({
         setup() {
           // TODO: Crear la variable reactiva "tab" inicializada con "home"
+          const tab = ref('home')
 
           return {
             // TODO: retornar la variable "tab"
+            tab
           };
         },
       }).mount("#app");

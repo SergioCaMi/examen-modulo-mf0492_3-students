@@ -1,3 +1,7 @@
-GET /check
-GET / - Home
 GET /api/patients
+GET / - Home
+GET /check - Se ha realizado una consulta sobre el paciente número 67890123456
+GET /check - Se ha realizado una consulta sobre el paciente número 067890123456
+GET /api/patients
+GET / - Home
+
