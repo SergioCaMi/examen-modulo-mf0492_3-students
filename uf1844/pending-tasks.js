@@ -1,6 +1,7 @@
 
-function filterPendingTaks(tasks) {
-  return tasks.filter(t=> !t.completed).map(t => t.task).join(', ')
+function filterPendingTasks(tasks) {
+  return tasks.filter(t=> !t.completed)
+  // return tasks.filter(t=> !t.completed).map(t => t.task).join(', ')
 }
 
 const tasks = [
@@ -10,7 +11,7 @@ const tasks = [
   { task: "Clean the house", completed: true },
 ];
 
-const result = filterPendingTaks(tasks);
+const result = filterPendingTasks(tasks);
 console.log(result);
 /**
  * // Pending tasks

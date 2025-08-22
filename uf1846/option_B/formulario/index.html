@@ -30,21 +30,23 @@
         setup() {
           // Variables reactivas
           // TODO: variable para guardar el nombre
-          const nombre = ref('')
+          const nombre = ref("");
           // TODO: variable para guardar la edad
-          const edad = ref(0)
+          const edad = ref(0);
           // TODO: variable para mostrar el mensaje
-          const mostrado = ref(false)
+          const mostrado = ref(false);
           // TODO: Crear el método mostrar() que ponga mostrado en true solo si hay nombre y edad
-          const mostrar = ()=>{
-            mostrado.value = !mostrado.value
-          }
+          const mostrar = () => {
+            if (nombre.value.trim() && edad.value > 0) {
+              mostrado.value = true;
+            }
+          };
           return {
             nombre,
             edad,
             mostrado,
             // TODO: retornar el método mostrar aquí
-            mostrar
+            mostrar,
           };
         },
       }).mount("#app");
